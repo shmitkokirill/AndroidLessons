@@ -5,9 +5,11 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.265625" />
         <entry key="layouttype/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="layouttype/src/main/res/layout/constraint_layout.xml" value="0.3104166666666667" />
         <entry key="layouttype/src/main/res/layout/linear_layout.xml" value="0.25" />
         <entry key="layouttype/src/main/res/layout/relative_layout.xml" value="0.20199275362318841" />
         <entry key="layouttype/src/main/res/layout/table_layout.xml" value="0.20199275362318841" />
+        <entry key="layouttype/src/main/res/layout/task4_2.xml" value="0.1" />
       </map>
     </option>
   </component>
