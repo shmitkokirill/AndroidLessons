@@ -15,3 +15,6 @@ dependencyResolutionManagement {
 rootProject.name = "Practice1"
 include ':app'
 include ':layouttype'
+include ':task5'
+include ':task6'
+include ':task7'
