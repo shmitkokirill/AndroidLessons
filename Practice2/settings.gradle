@@ -13,4 +13,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Practice2"
-include ':app'
+include ':LifecycleActivity'
+include ':multiactivity'
+include ':intentfilter'
+include ':toastapp'
