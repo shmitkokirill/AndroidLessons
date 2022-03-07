@@ -4,9 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="LifecycleActivity/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="dialog/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="intentfilter/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="multiactivity/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="multiactivity/src/main/res/layout/activity_second.xml" value="0.25" />
+        <entry key="notificationapp/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="toastapp/src/main/res/layout/activity_main.xml" value="0.33" />
       </map>
     </option>
