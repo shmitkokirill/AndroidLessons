@@ -6,6 +6,15 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22644927536231885" />
         <entry key="intentapp/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="intentapp/src/main/res/layout/activity_second.xml" value="0.22644927536231885" />
+        <entry key="resultactivity/src/main/res/layout/activity_data.xml" value="0.35" />
+        <entry key="resultactivity/src/main/res/layout/activity_main.xml" value="0.35" />
+        <entry key="share/src/main/res/layout/activity_main.xml" value="0.35" />
+        <entry key="share/src/main/res/layout/activity_second.xml" value="0.35" />
+        <entry key="simplefragmentapp/src/main/res/layout-land/activity_main.xml" value="0.2967372134038801" />
+        <entry key="simplefragmentapp/src/main/res/layout/activity_main.xml" value="0.35052083333333334" />
+        <entry key="simplefragmentapp/src/main/res/layout/fragment_testing.xml" value="0.35052083333333334" />
+        <entry key="simplefragmentapp/src/main/res/layout/fragment_testing2.xml" value="0.35052083333333334" />
+        <entry key="systemintentsapp/src/main/res/layout/activity_main.xml" value="0.35" />
       </map>
     </option>
   </component>

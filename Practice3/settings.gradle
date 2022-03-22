@@ -15,3 +15,7 @@ dependencyResolutionManagement {
 rootProject.name = "Practice3"
 include ':app'
 include ':intentapp'
+include ':share'
+include ':resultactivity'
+include ':systemintentsapp'
+include ':simplefragmentapp'
