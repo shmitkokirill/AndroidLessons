@@ -1,28 +1,68 @@
-*
-!Practice4
-!Practice4/app
-!Practice4/app/src
-!Practice4/app/src/main
-!Practice4/app/src/main/java
-!Practice4/app/src/main/java/ru
-!Practice4/app/src/main/java/ru/mirea
-!Practice4/app/src/main/java/ru/mirea/shmitko
-!Practice4/app/src/main/java/ru/mirea/shmitko/practice4
-!Practice4/app/src/main/java/ru/mirea/shmitko/practice4/*
-!Practice4/app/src/main/res
-!Practice4/app/src/main/res/layout
-!Practice4/app/src/main/res/layout/*
-!Practice4/app/src/main/AndroidManifest.xml
-!Practice4/thread
-!Practice4/thread/src
-!Practice4/thread/src/main
-!Practice4/thread/src/main/java
-!Practice4/thread/src/main/java/ru
-!Practice4/thread/src/main/java/ru/mirea
-!Practice4/thread/src/main/java/ru/mirea/shmitko
-!Practice4/thread/src/main/java/ru/mirea/shmitko/thread
-!Practice4/thread/src/main/java/ru/mirea/shmitko/thread/*
-!Practice4/thread/src/main/res
-!Practice4/thread/src/main/res/layout
-!Practice4/thread/src/main/res/layout/*
-!Practice4/thread/src/main/AndroidManifest.xml
+#   *
+#   !Practice4
+#   !Practice4/app
+#   !Practice4/app/src
+#   !Practice4/app/src/main
+#   !Practice4/app/src/main/java
+#   !Practice4/app/src/main/java/ru
+#   !Practice4/app/src/main/java/ru/mirea
+#   !Practice4/app/src/main/java/ru/mirea/shmitko
+#   !Practice4/app/src/main/java/ru/mirea/shmitko/practice4
+#   !Practice4/app/src/main/java/ru/mirea/shmitko/practice4/*
+#   !Practice4/app/src/main/res
+#   !Practice4/app/src/main/res/layout
+#   !Practice4/app/src/main/res/layout/*
+#   !Practice4/app/src/main/AndroidManifest.xml
+#   !Practice4/thread
+#   !Practice4/thread/src
+#   !Practice4/thread/src/main
+#   !Practice4/thread/src/main/java
+#   !Practice4/thread/src/main/java/ru
+#   !Practice4/thread/src/main/java/ru/mirea
+#   !Practice4/thread/src/main/java/ru/mirea/shmitko
+#   !Practice4/thread/src/main/java/ru/mirea/shmitko/thread
+#   !Practice4/thread/src/main/java/ru/mirea/shmitko/thread/*
+#   !Practice4/thread/src/main/res
+#   !Practice4/thread/src/main/res/layout
+#   !Practice4/thread/src/main/res/layout/*
+#   !Practice4/thread/src/main/AndroidManifest.xml
+#   !Practice4/data_thread
+#   !Practice4/data_thread/src
+#   !Practice4/data_thread/src/main
+#   !Practice4/data_thread/src/main/java
+#   !Practice4/data_thread/src/main/java/ru
+#   !Practice4/data_thread/src/main/java/ru/mirea
+#   !Practice4/data_thread/src/main/java/ru/mirea/shmitko
+#   !Practice4/data_thread/src/main/java/ru/mirea/shmitko/thread
+#   !Practice4/data_thread/src/main/java/ru/mirea/shmitko/thread/*
+#   !Practice4/data_thread/src/main/res
+#   !Practice4/data_thread/src/main/res/layout
+#   !Practice4/data_thread/src/main/res/layout/*
+#   !Practice4/data_thread/src/main/AndroidManifest.xml
+#   !Practice4/looper
+#   !Practice4/looper/src
+#   !Practice4/looper/src/main
+#   !Practice4/looper/src/main/java
+#   !Practice4/looper/src/main/java/ru
+#   !Practice4/looper/src/main/java/ru/mirea
+#   !Practice4/looper/src/main/java/ru/mirea/shmitko
+#   !Practice4/looper/src/main/java/ru/mirea/shmitko/thread
+#   !Practice4/looper/src/main/java/ru/mirea/shmitko/thread/*
+#   !Practice4/looper/src/main/res
+#   !Practice4/looper/src/main/res/layout
+#   !Practice4/looper/src/main/res/layout/*
+#   !Practice4/looper/src/main/AndroidManifest.xml
+#   !Practice4/loadermanager
+#   !Practice4/loadermanager/src
+#   !Practice4/loadermanager/src/main
+#   !Practice4/loadermanager/src/main/java
+#   !Practice4/loadermanager/src/main/java/ru
+#   !Practice4/loadermanager/src/main/java/ru/mirea
+#   !Practice4/loadermanager/src/main/java/ru/mirea/shmitko
+#   !Practice4/loadermanager/src/main/java/ru/mirea/shmitko/thread
+#   !Practice4/loadermanager/src/main/java/ru/mirea/shmitko/thread/*
+#   !Practice4/loadermanager/src/main/res
+#   !Practice4/loadermanager/src/main/res/layout
+#   !Practice4/loadermanager/src/main/res/layout/*
+#   !Practice4/loadermanager/src/main/AndroidManifest.xml
+
