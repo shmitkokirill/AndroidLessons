@@ -1,10 +1,16 @@
 package ru.mirea.shmitko.mireaproject;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -25,10 +31,11 @@ import ru.mirea.shmitko.mireaproject.databinding.ActivityMainBinding;
 import ru.mirea.shmitko.mireaproject.ui.calculator.CalculatorFragment;
 import ru.mirea.shmitko.mireaproject.ui.player.MusicPlayer;
 import ru.mirea.shmitko.mireaproject.ui.player.MyPlayerService;
+import ru.mirea.shmitko.mireaproject.ui.sensors.SensorsFragment;
 
-public class MainActivity extends AppCompatActivity {
-
-
+public class MainActivity extends AppCompatActivity
+        implements SensorEventListener {
+    private SensorManager sensorManager;
     public static SharedPreferences preferences;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
@@ -36,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
 
         preferences = getPreferences(MODE_PRIVATE);
 
@@ -59,7 +68,11 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_browser, R.id.nav_calc, R.id.nav_player)
+                R.id.nav_browser,
+                R.id.nav_calc,
+                R.id.nav_player,
+                R.id.nav_sensors
+        )
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController =
@@ -73,6 +86,55 @@ public class MainActivity extends AppCompatActivity {
                 mAppBarConfiguration
         );
         NavigationUI.setupWithNavController(navigationView, navController);
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        sensorManager.registerListener(this,
+                sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+                SensorManager.SENSOR_DELAY_UI);
+
+        sensorManager.registerListener(this,
+                sensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY),
+                SensorManager.SENSOR_DELAY_UI);
+
+        sensorManager.registerListener(this,
+                sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT),
+                SensorManager.SENSOR_DELAY_UI);
+    }
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    }
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (findViewById(R.id.txtViewS1) != null) {
+            if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+                float azimuth = event.values[0];
+            ((TextView) findViewById(R.id.txtViewS1))
+                    .setText("X-coords: " + azimuth);
+            }
+            if (event.sensor.getType() == Sensor.TYPE_GRAVITY) {
+                float gravity = event.values[0];
+            ((TextView) findViewById(R.id.txtViewS2))
+                    .setText("  Gravity: " + gravity);
+            }
+            if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
+                float light = event.values[0];
+            ((TextView) findViewById(R.id.txtViewS3))
+                    .setText("  Light: " + light);
+            }
+        }
     }
 
     @Override
@@ -114,6 +176,32 @@ public class MainActivity extends AppCompatActivity {
         if (fragment != null && fragment.isVisible()) {
             if (fragment instanceof CalculatorFragment) {
                 ((CalculatorFragment) fragment).on_btnOperationClick(v);
+            }
+        }
+    }
+
+    public void on_btnMakePhotoClick_SensorsFragment(View v) {
+        Fragment hostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment_content_main);
+        Fragment fragment =
+                hostFragment.getChildFragmentManager().getFragments().get(0);
+
+        if (fragment != null && fragment.isVisible()) {
+            if (fragment instanceof SensorsFragment) {
+                ((SensorsFragment) fragment).on_btnMakePhotoClick(v);
+            }
+        }
+    }
+
+    public void on_btnShowPhotoClick_SensorsFragment(View v) {
+        Fragment hostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment_content_main);
+        Fragment fragment =
+                hostFragment.getChildFragmentManager().getFragments().get(0);
+
+        if (fragment != null && fragment.isVisible()) {
+            if (fragment instanceof SensorsFragment) {
+                ((SensorsFragment) fragment).on_btnShowPhotoClick(v);
             }
         }
     }

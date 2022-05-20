@@ -11,6 +11,7 @@
         <entry key="app/src/main/res/layout/fragment_calculator.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_gallery.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_music_player.xml" value="0.2756644085461178" />
+        <entry key="app/src/main/res/layout/fragment_sensors.xml" value="0.33" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.2755208333333333" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.33" />
         <entry key="app/src/main/res/menu/main.xml" value="0.33" />

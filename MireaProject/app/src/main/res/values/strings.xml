@@ -10,4 +10,5 @@
     <string name="menu_calculator">Calculator</string>
     <string name="menu_browser">Browser</string>
     <string name="menu_player">Music Player</string>
+    <string name="menu_sensors">Sensors</string>
 </resources>

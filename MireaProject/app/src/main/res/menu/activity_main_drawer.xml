@@ -18,5 +18,10 @@
             android:id="@+id/nav_player"
             android:icon="@drawable/ic_music"
             android:title="@string/menu_player" />
+
+        <item
+            android:id="@+id/nav_sensors"
+            android:icon="@drawable/ic_sensor"
+            android:title="@string/menu_sensors" />
     </group>
 </menu>

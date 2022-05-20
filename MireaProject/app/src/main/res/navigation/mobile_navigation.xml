@@ -23,4 +23,10 @@
         android:label="@string/menu_player"
         tools:layout="@layout/fragment_music_player" />
 
+    <fragment
+        android:id="@+id/nav_sensors"
+        android:name="ru.mirea.shmitko.mireaproject.ui.sensors.SensorsFragment"
+        android:label="@string/menu_sensors"
+        tools:layout="@layout/fragment_sensors" />
+
 </navigation>
