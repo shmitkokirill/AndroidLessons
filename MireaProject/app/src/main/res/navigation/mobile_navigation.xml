@@ -28,5 +28,10 @@
         android:name="ru.mirea.shmitko.mireaproject.ui.sensors.SensorsFragment"
         android:label="@string/menu_sensors"
         tools:layout="@layout/fragment_sensors" />
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="ru.mirea.shmitko.mireaproject.ui.settings.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_settings" />
 
 </navigation>

@@ -28,6 +28,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
 
 import ru.mirea.shmitko.mireaproject.databinding.ActivityMainBinding;
+import ru.mirea.shmitko.mireaproject.databinding.FragmentSettingsBinding;
 import ru.mirea.shmitko.mireaproject.ui.calculator.CalculatorFragment;
 import ru.mirea.shmitko.mireaproject.ui.player.MusicPlayer;
 import ru.mirea.shmitko.mireaproject.ui.player.MyPlayerService;
@@ -45,12 +46,10 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
-
         preferences = getPreferences(MODE_PRIVATE);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +70,8 @@ public class MainActivity extends AppCompatActivity
                 R.id.nav_browser,
                 R.id.nav_calc,
                 R.id.nav_player,
-                R.id.nav_sensors
+                R.id.nav_sensors,
+                R.id.nav_settings
         )
                 .setOpenableLayout(drawer)
                 .build();

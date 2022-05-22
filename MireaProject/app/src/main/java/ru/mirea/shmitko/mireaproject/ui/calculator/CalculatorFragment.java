@@ -1,5 +1,8 @@
 package ru.mirea.shmitko.mireaproject.ui.calculator;
 
+import static ru.mirea.shmitko.mireaproject.MainActivity.preferences;
+
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import ru.mirea.shmitko.mireaproject.R;
 import ru.mirea.shmitko.mireaproject.databinding.FragmentCalculatorBinding;
@@ -39,6 +42,10 @@ public class CalculatorFragment extends Fragment {
         resultField = root.findViewById(R.id.txtViewResult);
         numberField = root.findViewById(R.id.txtViewNumberField);
         operationField = root.findViewById(R.id.txtViewOperation);
+
+        String backKey = getString(R.string.KEY_BACKGROUND);
+        String backColor = preferences.getString(backKey, "white");
+        root.setBackgroundColor(Color.parseColor(backColor));
 
         return root;
     }

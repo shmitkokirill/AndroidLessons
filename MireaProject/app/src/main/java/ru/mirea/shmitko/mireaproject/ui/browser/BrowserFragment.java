@@ -1,5 +1,7 @@
 package ru.mirea.shmitko.mireaproject.ui.browser;
 
+import static ru.mirea.shmitko.mireaproject.MainActivity.preferences;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,10 +29,11 @@ public class BrowserFragment extends Fragment {
             false
         );
         View root = binding.getRoot();
-
+        String keyPage = getString(R.string.KEY_HOMEPAGE);
+        String homePage = preferences.getString(keyPage, startPage);
         webView = root.findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl(startPage);
+        webView.loadUrl(homePage);
         webView.setWebViewClient(new MyWebViewClient());
 
         return root;
