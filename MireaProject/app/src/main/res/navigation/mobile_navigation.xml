@@ -3,23 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_browser">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="ru.mirea.shmitko.mireaproject.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/nav_browser"
+        android:name="ru.mirea.shmitko.mireaproject.ui.browser.BrowserFragment"
+        android:label="@string/menu_browser"
+        tools:layout="@layout/fragment_browser" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="ru.mirea.shmitko.mireaproject.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_calc"
+        android:name="ru.mirea.shmitko.mireaproject.ui.calculator.CalculatorFragment"
+        android:label="@string/menu_calculator"
+        tools:layout="@layout/fragment_calculator" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="ru.mirea.shmitko.mireaproject.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_player"
+        android:name="ru.mirea.shmitko.mireaproject.ui.player.MusicPlayer"
+        android:label="@string/menu_player"
+        tools:layout="@layout/fragment_music_player" />
+
+    <fragment
+        android:id="@+id/nav_sensors"
+        android:name="ru.mirea.shmitko.mireaproject.ui.sensors.SensorsFragment"
+        android:label="@string/menu_sensors"
+        tools:layout="@layout/fragment_sensors" />
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="ru.mirea.shmitko.mireaproject.ui.settings.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_settings" />
+
 </navigation>

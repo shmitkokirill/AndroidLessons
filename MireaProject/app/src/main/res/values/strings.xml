@@ -7,7 +7,11 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_calculator">Calculator</string>
+    <string name="menu_browser">Browser</string>
+    <string name="menu_player">Music Player</string>
+    <string name="menu_sensors">Sensors</string>
+    <string name="menu_settings">Settings</string>
+    <string name="KEY_HOMEPAGE">key_homepage</string>
+    <string name="KEY_BACKGROUND">key_backColor</string>
 </resources>

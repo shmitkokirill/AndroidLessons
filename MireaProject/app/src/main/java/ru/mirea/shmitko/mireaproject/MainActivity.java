@@ -1,23 +1,43 @@
 package ru.mirea.shmitko.mireaproject;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.ListFragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.List;
+
 import ru.mirea.shmitko.mireaproject.databinding.ActivityMainBinding;
+import ru.mirea.shmitko.mireaproject.databinding.FragmentSettingsBinding;
+import ru.mirea.shmitko.mireaproject.ui.calculator.CalculatorFragment;
+import ru.mirea.shmitko.mireaproject.ui.player.MusicPlayer;
+import ru.mirea.shmitko.mireaproject.ui.player.MyPlayerService;
+import ru.mirea.shmitko.mireaproject.ui.sensors.SensorsFragment;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity
+        implements SensorEventListener {
+    private SensorManager sensorManager;
+    public static SharedPreferences preferences;
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
@@ -25,14 +45,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
+        preferences = getPreferences(MODE_PRIVATE);
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(
+                        view,
+                        "Replace with your own action",
+                        Snackbar.LENGTH_LONG
+                )
                         .setAction("Action", null).show();
             }
         });
@@ -41,12 +67,74 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.nav_browser,
+                R.id.nav_calc,
+                R.id.nav_player,
+                R.id.nav_sensors,
+                R.id.nav_settings
+        )
                 .setOpenableLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavController navController =
+                Navigation.findNavController(
+                        this,
+                        R.id.nav_host_fragment_content_main
+                );
+        NavigationUI.setupActionBarWithNavController(
+                this,
+                navController,
+                mAppBarConfiguration
+        );
         NavigationUI.setupWithNavController(navigationView, navController);
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        sensorManager.unregisterListener(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        sensorManager.registerListener(this,
+                sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+                SensorManager.SENSOR_DELAY_UI);
+
+        sensorManager.registerListener(this,
+                sensorManager.getDefaultSensor(Sensor.TYPE_GRAVITY),
+                SensorManager.SENSOR_DELAY_UI);
+
+        sensorManager.registerListener(this,
+                sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT),
+                SensorManager.SENSOR_DELAY_UI);
+    }
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    }
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (findViewById(R.id.txtViewS1) != null) {
+            if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+                float azimuth = event.values[0];
+            ((TextView) findViewById(R.id.txtViewS1))
+                    .setText("X-coords: " + azimuth);
+            }
+            if (event.sensor.getType() == Sensor.TYPE_GRAVITY) {
+                float gravity = event.values[0];
+            ((TextView) findViewById(R.id.txtViewS2))
+                    .setText("  Gravity: " + gravity);
+            }
+            if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
+                float light = event.values[0];
+            ((TextView) findViewById(R.id.txtViewS3))
+                    .setText("  Light: " + light);
+            }
+        }
     }
 
     @Override
@@ -58,8 +146,75 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        NavController navController =
+                Navigation.findNavController(
+                        this,
+                        R.id.nav_host_fragment_content_main
+                );
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+    public void on_btnNumberClick_calcFragment(View v) {
+        Fragment hostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment_content_main);
+        Fragment fragment =
+                hostFragment.getChildFragmentManager().getFragments().get(0);
+
+        if (fragment != null && fragment.isVisible()) {
+            if (fragment instanceof CalculatorFragment) {
+                ((CalculatorFragment) fragment).on_btnNumberClick(v);
+            }
+        }
+    }
+
+    public void on_btnOperationClick_calcFragment(View v) {
+        Fragment hostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment_content_main);
+        Fragment fragment =
+                hostFragment.getChildFragmentManager().getFragments().get(0);
+
+        if (fragment != null && fragment.isVisible()) {
+            if (fragment instanceof CalculatorFragment) {
+                ((CalculatorFragment) fragment).on_btnOperationClick(v);
+            }
+        }
+    }
+
+    public void on_btnMakePhotoClick_SensorsFragment(View v) {
+        Fragment hostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment_content_main);
+        Fragment fragment =
+                hostFragment.getChildFragmentManager().getFragments().get(0);
+
+        if (fragment != null && fragment.isVisible()) {
+            if (fragment instanceof SensorsFragment) {
+                ((SensorsFragment) fragment).on_btnMakePhotoClick(v);
+            }
+        }
+    }
+
+    public void on_btnShowPhotoClick_SensorsFragment(View v) {
+        Fragment hostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment_content_main);
+        Fragment fragment =
+                hostFragment.getChildFragmentManager().getFragments().get(0);
+
+        if (fragment != null && fragment.isVisible()) {
+            if (fragment instanceof SensorsFragment) {
+                ((SensorsFragment) fragment).on_btnShowPhotoClick(v);
+            }
+        }
+    }
+    public void on_btnPlayClick_musicFrag(View v) {
+        startService(
+            new Intent(MainActivity.this, MyPlayerService.class));
+    }
+    public void on_btnStopPlayClick_musicFrag(View v) {
+        stopService(
+                new Intent(
+                        MainActivity.this,
+                        MyPlayerService.class
+                )
+        );
     }
 }
