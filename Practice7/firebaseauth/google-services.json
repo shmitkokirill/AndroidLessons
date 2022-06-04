@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "512071087733",
+    "project_id": "practice7-cc63a",
+    "storage_bucket": "practice7-cc63a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:512071087733:android:e5f860c0e4125fcb38ea3c",
+        "android_client_info": {
+          "package_name": "ru.mirea.shmitko.firebaseauth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "512071087733-0kqd4vgngjii4rv5rem07h847qakusck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgUha7U6y8dn8PHrJqgbjTdtAIbZfhVyA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "512071087733-0kqd4vgngjii4rv5rem07h847qakusck.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
