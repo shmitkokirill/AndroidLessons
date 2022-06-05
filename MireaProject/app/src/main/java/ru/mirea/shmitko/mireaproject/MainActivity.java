@@ -12,9 +12,15 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.ListFragment;
 import androidx.navigation.NavController;
@@ -30,12 +36,14 @@ import java.util.List;
 import ru.mirea.shmitko.mireaproject.databinding.ActivityMainBinding;
 import ru.mirea.shmitko.mireaproject.databinding.FragmentSettingsBinding;
 import ru.mirea.shmitko.mireaproject.ui.calculator.CalculatorFragment;
+import ru.mirea.shmitko.mireaproject.ui.map.MapsFragment;
 import ru.mirea.shmitko.mireaproject.ui.player.MusicPlayer;
 import ru.mirea.shmitko.mireaproject.ui.player.MyPlayerService;
 import ru.mirea.shmitko.mireaproject.ui.sensors.SensorsFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements SensorEventListener {
+        implements SensorEventListener,
+        GoogleMap.OnMapClickListener {
     private SensorManager sensorManager;
     public static SharedPreferences preferences;
     private AppBarConfiguration mAppBarConfiguration;
@@ -71,7 +79,8 @@ public class MainActivity extends AppCompatActivity
                 R.id.nav_calc,
                 R.id.nav_player,
                 R.id.nav_sensors,
-                R.id.nav_settings
+                R.id.nav_settings,
+                R.id.nav_map
         )
                 .setOpenableLayout(drawer)
                 .build();
@@ -216,5 +225,21 @@ public class MainActivity extends AppCompatActivity
                         MyPlayerService.class
                 )
         );
+    }
+
+    @Override
+    public void onMapClick(@NonNull LatLng latLng) {
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(
+                latLng).zoom(12).build();
+        Fragment hostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment_content_main);
+        MapsFragment fragment =
+                (MapsFragment) hostFragment.getChildFragmentManager().getFragments().get(0);
+
+        GoogleMap mMap = fragment.getMap();
+        mMap.animateCamera(CameraUpdateFactory
+                .newCameraPosition(cameraPosition));
+        mMap.addMarker(new MarkerOptions().title("Что за место?")
+                .snippet("Новое место").position(latLng));
     }
 }
