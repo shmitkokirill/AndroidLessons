@@ -10,6 +10,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -36,6 +37,7 @@ import java.util.List;
 import ru.mirea.shmitko.mireaproject.databinding.ActivityMainBinding;
 import ru.mirea.shmitko.mireaproject.databinding.FragmentSettingsBinding;
 import ru.mirea.shmitko.mireaproject.ui.calculator.CalculatorFragment;
+import ru.mirea.shmitko.mireaproject.ui.dataRoom.DataRoom;
 import ru.mirea.shmitko.mireaproject.ui.map.MapsFragment;
 import ru.mirea.shmitko.mireaproject.ui.player.MusicPlayer;
 import ru.mirea.shmitko.mireaproject.ui.player.MyPlayerService;
@@ -80,7 +82,8 @@ public class MainActivity extends AppCompatActivity
                 R.id.nav_player,
                 R.id.nav_sensors,
                 R.id.nav_settings,
-                R.id.nav_map
+                R.id.nav_map,
+                R.id.nav_dataRoom
         )
                 .setOpenableLayout(drawer)
                 .build();
@@ -185,6 +188,37 @@ public class MainActivity extends AppCompatActivity
         if (fragment != null && fragment.isVisible()) {
             if (fragment instanceof CalculatorFragment) {
                 ((CalculatorFragment) fragment).on_btnOperationClick(v);
+            }
+        }
+    }
+
+    public void on_btnSubmitClick_dataRoomFragment(View v) {
+        Fragment hostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment_content_main);
+        Fragment fragment =
+                hostFragment.getChildFragmentManager().getFragments().get(0);
+
+        EditText toDo = (EditText) findViewById(R.id.txtEditToDo);
+        EditText whenDo = (EditText) findViewById(R.id.txtEditWhenDo);
+        String toDoTxt = toDo.getText().toString();
+        String whenDoTxt = whenDo.getText().toString();
+
+        if (fragment != null && fragment.isVisible()) {
+            if (fragment instanceof DataRoom) {
+                ((DataRoom) fragment).on_btnSubmitClick(v, toDoTxt, whenDoTxt);
+            }
+        }
+    }
+
+    public void on_btnRemoveClick_dataRoomFragment(View v) {
+        Fragment hostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment_content_main);
+        Fragment fragment =
+                hostFragment.getChildFragmentManager().getFragments().get(0);
+
+        if (fragment != null && fragment.isVisible()) {
+            if (fragment instanceof DataRoom) {
+                ((DataRoom) fragment).on_btnRemoveClick(v);
             }
         }
     }

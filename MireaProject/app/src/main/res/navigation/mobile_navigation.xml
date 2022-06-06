@@ -39,4 +39,10 @@
         android:label="@string/menu_map"
         tools:layout="@layout/fragment_maps" />
 
+    <fragment
+        android:id="@+id/nav_dataRoom"
+        android:name="ru.mirea.shmitko.mireaproject.ui.dataRoom.DataRoom"
+        android:label="@string/menu_dataRoom"
+        tools:layout="@layout/fragment_data_room" />
+
 </navigation>

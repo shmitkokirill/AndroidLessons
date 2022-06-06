@@ -30,7 +30,6 @@
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MireaProject.NoActionBar">
-
         </activity>
         <activity
             android:name=".Authentication"
