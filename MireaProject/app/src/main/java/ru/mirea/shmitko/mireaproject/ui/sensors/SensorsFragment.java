@@ -48,6 +48,8 @@ public class SensorsFragment extends Fragment {
                 container,
                 false
         );
+        View root = binding.getRoot();
+
         int cameraPermissionStatus =
                 ContextCompat.checkSelfPermission(
                         getContext(),
@@ -73,11 +75,7 @@ public class SensorsFragment extends Fragment {
                     REQUEST_CODE_PERMISSION_CAMERA
             );
         }
-        return inflater.inflate(
-                R.layout.fragment_sensors,
-                container,
-                false
-        );
+        return root;
     }
 
     public File createImageFile() throws IOException {
